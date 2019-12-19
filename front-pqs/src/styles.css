@@ -1,0 +1,463 @@
+@charset "utf-8";
+/* Reset de página */
+* {
+	font-family: "Arial";
+	font-size: 16px;
+}
+
+/* Formatação dos menu com opção de dropdown */
+.treeview a {
+    cursor: pointer;
+}
+
+/* Formatação do menu dropdown */
+.treeview-menu a {
+    color: white;
+}
+
+/* Formatação dos menu sem dropdown */
+.active a{
+    color: white;
+}
+
+/* Formatação nome menu */
+.black {
+    color: black !important;
+}
+
+.ancora {
+	color: white;
+	text-decoration: none;
+}
+
+.ancora:hover {
+	color: white;
+}
+
+.pagina {
+	margin-top: 1%;
+}
+
+.menu-superior {
+	width: 100%;
+	background-color: rgb(52,46,110);
+	position: fixed !important;
+	top: 0;
+	left: 0;
+	right: 0;
+	text-align: right;
+    padding-right: 2%;
+}
+
+.dropdown-toggle {
+    padding: 5px;
+}
+
+/* Formatação Icone PQS */
+.logo-mini, .logo-lg {
+    color: white;
+}
+
+/* Formatação da imagem de dropdown do perfil */
+.img-circle {
+    width: 120px !important;
+    height: 120px !important;
+    border-radius: 50%;
+}
+
+/* Formtação do button do menu */
+.sidebar-toggle, .sidebar-toggle:focus {
+    color: white;
+    font-size: large;
+}
+
+/* Formatação nome do menu superior */
+.hidden-xs, .dropdown-toggle::after {
+    color: white;
+}
+
+.nav > li > a:hover, .nav > li > a:active, .nav > li > a:focus {
+    background-color: transparent !important;
+}
+
+.menu-esquerdo {
+	position: fixed;
+	display: block;
+    top: 50px;
+    padding-top: 20px;
+	left: 0;
+	bottom: 0;
+	background-color: rgb(52,46,110);
+	width: 13%;
+	min-width: 150px;
+	max-width: 150px;
+	color: white;
+}
+
+@media(max-width: 767px){
+    .menu-esquerdo {
+        top: 100px;
+        bottom: 0;
+        min-height: 100%;
+    }
+
+    .main-header {
+        max-height: 120px !important;
+    }
+}
+
+.menu-esquerdo-options {
+	margin-top: 6%;
+	margin-left: 6%;
+	display: block;
+
+}
+
+.reset {
+    width: 100%;
+    margin-left: -150px !important;
+    padding-left: 50px;
+}
+
+.content-wrapper {
+    margin-top: 80px;
+    background-color: white !important;
+    transform: translate(130px, 0) !important;
+}
+
+@media(max-width: 800px){
+    .sidebar-open .content-wrapper {
+        transform: translate(150px, 0) !important;
+        margin-right: 5%;
+    }
+
+    .reset {
+        margin-left: -10% !important;
+        margin-right: 5%;
+    }
+
+}
+
+.form {
+	width: 100%;
+}
+
+.img-logo-dashboard {
+	margin-top: 10%;
+	width: 40%;
+}
+
+.sidenav {
+  height: 100%;
+  background-color: rgb(52,46,110);
+  padding-top: 6%;
+  font-family: "Arial";
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  text-decoration: none;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  color: white;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* On mouse-over */
+.sidenav a:hover{
+  text-decoration: underline;
+
+}
+/* Add an active class to the active dropdown button */
+.active {
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  padding-left: 20px;
+
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+}
+
+.sidenav a {
+	font-size: 15px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) { 
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.container-btn-prox {
+	width: 100%;
+	text-align: right;	
+}
+
+.btn-prox {
+	background-color: rgb(52,46,110);
+	color: white;
+	border: none;
+	padding: 5px;
+	border-radius: .25em;
+    margin-bottom: 20px;
+    transition: all .5s;
+}
+
+.btn-prox:disabled, .btn-login:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.inline {
+	display: inline-flex !important;
+	width: 100%;
+}
+
+.form-g {
+	width: 69%;
+}
+
+.form-p {
+	width: 29%;
+}
+
+.form-m {
+	width: 49%;
+}
+
+.margin-r {
+	margin-right: 1%;
+}
+
+.margin-l {
+	margin-left: 1%;
+}
+
+.center {
+	width: 100%;
+	text-align: center;
+}
+
+/* Formatação container alterar */
+.container-consultar {
+    width: 100% !important;
+    margin-top: 2%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1%;
+    margin-bottom: 5%;
+}
+
+@media(max-width: 800px){
+    .container-consultar {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Formatação ancora dos cards */
+.nav-link {
+    cursor: pointer;
+}
+
+/* Formatação de title */
+.card-title {
+    text-align: left !important;
+}
+
+/* Formatação body dos cards */
+.card-text {
+    margin-bottom: 1%;
+}
+
+/* Formatação dos item do card */
+.card-item {
+    width: 100%;
+    display: flex;
+    margin-bottom: .5%;
+    border-bottom: .2px solid #dddddd;
+}
+
+/* Formatação do title do item do card */
+.card-item-title {
+    font-weight: bold;
+    width: 40%;
+    padding-left: 2%;
+    text-align: left !important;
+}
+
+/* Formatação da informação do card */
+.card-item-info {
+    width: 70%;
+    text-align: left;
+    display: inline-flex;
+}
+
+/* Formatação do bottom do button do card */
+.card-bottom {
+    margin-top: 1%;
+    display: inline-flex;
+    width: 100%;
+    text-align: left;
+}
+
+.card-button-container {
+    width: 70%;
+}
+
+.card-button {
+    color: black;
+    font-weight: bold;
+    border: transparent;
+    width: 100%;  
+    padding: 0;
+    border-radius: .4em;  
+}
+
+.card-item-info-text {
+    width: 70%;
+    text-align: left;
+}
+
+.container-card-btn-info {
+    width: 30%;
+    text-align: right;
+}
+
+.btn-card-info {
+    background-color: transparent;
+    border: none;
+    color: #0000EE;
+}
+
+.btn-card-info:hover {
+    text-decoration: underline;
+}
+
+.btn-active {
+    background-color: green;
+    width: 100%;
+    border-radius: .4em; 
+    color: white;
+}
+
+.btn-desactive {
+    background-color: red;
+    width: 100%;
+    border-radius: .4em; 
+    color: white;
+}
+
+/* Formatação de container de errors/success */
+.msg-container {
+    display: block;
+}
+
+/* Formatação de erro */
+.error-msg {
+    width: 100%;
+    background-color: red;
+    color: white;
+    padding: .5%;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: .4em;
+}
+
+/* Error color */
+.error-color {
+    color: red;
+}
+
+/* Formatação de success */
+.success-msg {
+    width: 100%;
+    background-color: green;
+    color: white;
+    padding: .5%;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: .4em;
+}
+
+/* Formatação modal */
+.btn-modal {
+    width: 100%;
+    height: 100%;
+    margin-top: 1%;
+    border: transparent;
+    border-radius: .5em;
+    background-color: rgb(52,46,110);
+    color: white;
+    font-weight: bold;
+}
+
+.button-sell {
+    width: 100%;
+    height: 100%;
+    margin-top: 1%;
+    border: transparent;
+    border-radius: .5em;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+}
+
+.button-ent {
+    width: 100%;
+    height: 100%;
+    margin-top: 1%;
+    border: transparent;
+    border-radius: .5em;
+    background-color: rgba(255, 230, 00, 1);
+    color: black;
+    font-weight: bold;
+}
+
+.absolute-modal {
+    position: absolute;
+}
+
+/* Divisão de form */
+.div-sep {
+    margin-top: 5%;
+}
+
+.div-espaco-btn {
+    margin-top: 4%;
+}
+
+/* Formatação extras */
+.container-btn-extra {
+    width: 100%;
+    text-align: right;
+    padding-right: 2%;
+}
+
+.a-extra {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.add {
+    color: green !important;
+}
+
+.remove {
+    color: red !important;
+}
+
+.no-under {
+    border-bottom: transparent !important;
+}

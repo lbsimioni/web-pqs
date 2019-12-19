@@ -1,0 +1,133 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar menu-esquerdo">
+
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu menu-esquerdo-options" data-widget="tree">
+            
+            <li class="active">
+                <a [routerLink]="dashboard">
+                    <span>DashBoard</span>
+                </a></li>
+            <!-- Optionally, you can add icons to the links -->
+            <li class="treeview">
+                <a><span>Funcionário</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a [routerLink]="cadastrarFunc">Cadastrar</a>
+                    </li>
+                    <li><a [routerLink]="consultarFunc">Consultar</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a><span>Aluno</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a [routerLink]="cadastrarAluno">Cadastrar</a></li>
+                    <li><a [routerLink]="consultarAluno">Consultar</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a><span>Responsável</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a [routerLink]="cadastraResp">Cadastrar</a></li>
+                    <li><a [routerLink]="consultarResp">Consultar</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a><span>Cartão Ponto</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a [routerLink]="lancarCP">Lançar</a></li>
+                    <li><a [routerLink]="consultarCP">Consultar</a></li>
+                    <li><a [routerLink]="consultarCH">Banco de Horas</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a><span>Matricula</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a [routerLink]="cadastrarMatricula">Cadastrar</a></li>
+                    <li><a [routerLink]="consultarMatricula">Consultar</a></li>
+                    <li><a [routerLink]="consultarMensalidade">Mensalidade</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a><span>Produto</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a [routerLink]="cadastrarProduto">Cadastrar</a></li>
+                    <li><a [routerLink]="consultarProduto">Consultar</a></li>
+                    <li><a [routerLink]="consultarVendas">Vendas</a></li>
+                    <li><a [routerLink]="consultarEntradas">Entradas</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a><span>Despesas</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a [routerLink]="cadastraDesp">Cadastrar</a></li>
+                    <li><a [routerLink]="consultarDesp">Consultar</a></li>
+                    <li><a [routerLink]="cadastraDespExtra">Cadastrar Extra</a></li>
+                    <li><a [routerLink]="consultarDespExtra">Consultar Extra</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a><span>Receita</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a [routerLink]="consultarReceita">Consultar</a></li>
+                    <li><a [routerLink]="cadastraReceitaExtra">Cadastrar Extra</a></li>
+                    <li><a [routerLink]="consultarReceitaExtra">Consultar Extra</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a><span>Rendimento</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a [routerLink]="consultarRendimento">Consultar</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+</aside>

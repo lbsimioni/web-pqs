@@ -1,0 +1,109 @@
+<div class="form">
+    <div class = "center"><h1>Editar Despesa</h1></div>
+    <div *ngIf="error || success" class = "msg-container">
+        <div *ngFor="let e of lstErrors" class = "error-msg">
+            {{ e }} 
+        </div>
+        <div *ngFor="let s of lstSuccess" class = "success-msg">
+            {{ s }}
+        </div>
+    </div>
+    
+
+    <form *ngIf="exists" [formGroup]="form" class="pagina">
+        <div class="form-group inline">
+            <div class="form-m margin-r">
+                <label for="mes">Mês</label>
+                <input 
+                type="text"
+                name="mes" 
+                id="mes" 
+                class="form-control" 
+                formControlName="mes"
+                readonly="true">
+            </div>
+
+            <div class="form-m margin-l">
+                <label for="ano">Ano</label>
+                <input 
+                type="text" 
+                name="ano" 
+                id="ano" 
+                class="form-control" 
+                placeholder="Ano"
+                formControlName="ano"
+                readonly="true"
+                mask="0000">
+            </div>
+        </div>
+
+        <div class="form-group inline">
+            <div class="form-m margin-r">
+                <label for="contAgua">Conta de Água</label>
+                <input 
+                type="text" 
+                name="contAgua" 
+                id="contAgua" 
+                class="form-control"
+                formControlName="contAgua"
+                [dropSpecialCharacters]="false" mask="0*.00" prefix="R$ ">
+            </div>
+
+            <div class="form-m margin-l">
+                <label for="contEnergia">Conta de Energia</label>
+                <input 
+                type="text" 
+                name="contEnergia" 
+                id="contEnergia" 
+                class="form-control" 
+                formControlName="contEnergia"
+                [dropSpecialCharacters]="false" mask="0*.00" prefix="R$ ">
+            </div>
+
+            <div class="form-m margin-l">
+                <label for="contInternet">Conta de Internet</label>
+                <input 
+                type="text" 
+                name="contInternet" 
+                id="contInternet" 
+                class="form-control" 
+                formControlName="contInternet"
+                [dropSpecialCharacters]="false" mask="0*.00" prefix="R$ ">
+            </div>
+        </div>
+
+        <div class="form-group inline">
+            <div class="form-m margin-r">
+                <label for="compra">Compra</label>
+                <input 
+                type="text" 
+                name="compra" 
+                id="compra" 
+                class="form-control"
+                formControlName="compra"
+                [dropSpecialCharacters]="false" mask="0*.00" prefix="R$ ">
+            </div>
+
+            <div class="form-m margin-l">
+                <label for="material">Material</label>
+                <input 
+                type="text" 
+                name="material" 
+                id="material" 
+                class="form-control" 
+                formControlName="material"
+                [dropSpecialCharacters]="false" mask="0*.00" prefix="R$ ">
+            </div>
+        </div>
+
+        <div class="div-espaco-btn"></div>
+
+        <div class="container-btn-prox">
+            <button 
+            type="submit" 
+            class="btn-prox"
+            (click)="salvar()"
+            [disabled]="!form.valid">Alterar</button>
+        </div>
+    </form>
+</div>

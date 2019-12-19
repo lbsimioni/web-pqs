@@ -1,0 +1,135 @@
+<div class="form">
+    <div class = "center"><h1>Editar Matrícula</h1></div>
+    <div *ngIf="error || success" class = "msg-container">
+        <div *ngFor="let e of lstErrors" class = "error-msg">
+            {{ e }} 
+        </div>
+        <div *ngFor="let s of lstSuccess" class = "success-msg">
+            {{ s }}
+        </div>
+    </div>
+    
+
+    <form *ngIf="exists" [formGroup]="form" class="pagina">
+         <div class="form-group inline">
+
+            <div class="form-m margin-r">
+                <label for="dataInic">Data de Início</label>
+                <input 
+                type="date" 
+                name="dataInic" 
+                id="dataInic" 
+                class="form-control" 
+                formControlName="dataInic"
+                readonly="true">
+            </div>
+
+            <div class="form-m margin-l">
+                <label for="dataFim">Data de Encerramento</label>
+                <input 
+                type="date" 
+                name="dataFim" 
+                id="dataFim" 
+                class="form-control" 
+                formControlName="dataFim"
+                readonly="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="dataPagamento">Data de Pagamento</label>
+            <input 
+            type="text" 
+            name="dataPagamento" 
+            id="dataPagamento" 
+            class="form-control" 
+            formControlName="dataPagamento">
+        </div>
+
+        <div class="form-group inline">
+            <div class="form-m margin-r">
+                <label for="valor">Valor</label>
+                <input 
+                type="text" 
+                name="valor" 
+                id="valor" 
+                class="form-control"
+                formControlName="valor">
+            </div>
+
+            <div class="form-m margin-l">
+                <label for="desconto">Desconto</label>
+                <input 
+                type="text" 
+                name="desconto" 
+                id="desconto" 
+                class="form-control" 
+                formControlName="desconto">
+            </div>
+        </div>
+
+        <div class="div-sep" formGroupName="aluno">
+            <h2>Aluno</h2>
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input 
+                type="text" 
+                name="nome" 
+                id="nome" 
+                class="form-control"
+                formControlName="nome"
+                readonly="true">
+            </div>
+
+            <div class="div-sep" formGroupName="responsavel">
+                <h2>Responsável</h2>
+
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input 
+                    type="text" 
+                    name="nome" 
+                    id="nome" 
+                    class="form-control"
+                    formControlName="nome"
+                    readonly="true">
+                </div>
+
+                <div class="form-group inline">
+                    <div class="form-m margin-r">
+                        <label for="rg">RG</label>
+                        <input 
+                        type="text" 
+                        name="rg" 
+                        id="rg" 
+                        class="form-control"
+                        formControlName="rg"
+                        readonly="true">
+                    </div>
+
+                    <div class="form-m margin-l">
+                        <label for="cpf">CPF</label>
+                        <input 
+                        type="text" 
+                        name="cpf" 
+                        id="cpf" 
+                        class="form-control" 
+                        formControlName="cpf"
+                        readonly="true"
+                        mask="000.000.000-00">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="div-espaco-btn"></div>
+
+        <div class="container-btn-prox">
+            <button 
+            type="submit" 
+            class="btn-prox"
+            (click)="salvar()"
+            [disabled]="!form.valid">Alterar</button>
+        </div>
+    </form>
+</div>

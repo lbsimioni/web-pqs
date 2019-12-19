@@ -1,0 +1,56 @@
+<div class="container-login">
+    <div class="border-login">
+        <div class="header-login">
+            <img src = "../../../assets/imagens/Logo.png">
+        </div>
+
+        <div class="body-login">
+            <form [formGroup]="form">
+                <div class="form-group">
+                    <input 
+                    type="text" 
+                    name="txt-user" 
+                    id="txt-user" 
+                    class="form-control" 
+                    placeholder="Usuário"
+                    formControlName="usuario">
+                    
+                </div>
+
+                <div class="input-group mb-3">
+                    <input 
+                    [type]="password" 
+                    name="txt-password" 
+                    id="txt-password" 
+                    class="form-control" 
+                    placeholder="Senha"
+                    formControlName="password">
+
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                        (click)="alterar()">
+                            <img [src]="visibility" >                     
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div *ngIf = "error" class = "container-login-error">
+            <span class = "login-error">Usuário ou senha inválida!</span>
+        </div>
+
+        <div class="footer-login">
+            <a href = "#">Esqueci minha senha</a>
+        </div>
+
+        <div class="buttons-login">
+            <button 
+            class="btn-login" 
+            (click)="validar()"
+            [disabled]="!form.valid">
+                Entrar
+            </button>
+        </div>
+    </div>
+</div>

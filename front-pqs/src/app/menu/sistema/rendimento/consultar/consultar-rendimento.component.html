@@ -1,0 +1,111 @@
+<div class="form">
+    <div class="center">
+        <h1>Consultar Rendimento</h1>
+    </div>
+
+    <form class="pagina">
+        <div *ngIf="success" class="success-msg">
+            {{ msgSuccess }}
+        </div>
+
+        <div *ngIf="error" class="error-container">
+            <span class="error" *ngFor="let e of msgError">
+                {{ e.message }}
+            </span>
+        </div>
+
+        <div *ngIf="vazio">
+            Nenhum rendimento encontrada!
+        </div>
+        <div class="container-consultar">
+            <div class="card text-left" *ngFor="let rend of lstRendimento">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active">Informações</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> {{ rend.mes }}/{{ rend.ano }} </h5>
+
+                    <div class="card-text" id="dadosPessoais">
+
+                        <!-- Codigo -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Codigo:
+                            </div>
+                            <div class="card-item-info">
+                                {{ rend.codigo }}
+                            </div>
+                        </div>
+
+                        <!-- Mês -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Mês:
+                            </div>
+                            <div class="card-item-info">
+                                {{ mes(rend.mes) }}
+                            </div>
+                        </div>
+
+                        <!-- Ano -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Ano:
+                            </div>
+                            <div class="card-item-info">
+                                {{ rend.ano }}
+                            </div>
+                        </div>
+
+                        <!-- Recebimento Material -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Valor Despesa:
+                            </div>
+                            <div class="card-item-info">
+                                <div class="card-item-info-text">
+                                    {{ rend.valorDespesa | currency: 'BRL' }}
+                                </div>
+                                
+                                <div class="container-card-btn-info">
+                                    <button (click)="despConsultar()" type="button" class="btn-card-info">Consultar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recebimento Mensalidade -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Valor Receita:
+                            </div>
+                            <div class="card-item-info">
+                                <div class="card-item-info-text">
+                                    {{ rend.valorLucro | currency: 'BRL' }}
+                                </div>
+                                
+                                <div class="container-card-btn-info">
+                                    <button (click)="receitaConsultar()" type="button" class="btn-card-info">Consultar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Total -->
+                        <div class="card-item no-under">
+                            <div class="card-item-title">
+                                Lucro:
+                            </div>
+                            <div class="card-item-info">
+                                {{ rend.total | currency: 'BRL' }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

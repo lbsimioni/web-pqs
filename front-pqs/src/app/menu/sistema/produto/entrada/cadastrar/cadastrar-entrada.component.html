@@ -1,0 +1,62 @@
+<div class="form">
+    <div class = "center"><h1>Cadastrar Entrada de Mercadoria</h1></div>
+    <div *ngIf="error || success" class = "msg-container">
+        <div *ngFor="let e of lstErrors" class = "error-msg">
+            {{ e }} 
+        </div>
+        <div *ngFor="let s of lstSuccess" class = "success-msg">
+            {{ s }}
+        </div>
+    </div>
+
+    <form *ngIf="exists" [formGroup]="form" class="pagina">
+
+        <div formGroupName="produto">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input 
+                type="text" 
+                name="nome" 
+                id="nome" 
+                class="form-control" 
+                formControlName="nome"
+                readonly="true">
+            </div>
+        </div>
+        
+
+        <div class="form-group inline">
+            <div class="form-m margin-r">
+                <label for="valorUnit">Valor Unitário</label>
+                <input 
+                type="text" 
+                name="valorUnit" 
+                id="valorUnit" 
+                class="form-control"
+                formControlName="valorUnit"
+                [dropSpecialCharacters]="false" mask="0*.00" prefix="R$ "
+                readonly="true">
+            </div>
+
+            <div class="form-m margin-l">
+                <label for="material">Quantidade</label>
+                <input 
+                type="text" 
+                name="quantidade" 
+                id="quantidade" 
+                class="form-control" 
+                formControlName="quantidade">
+            </div>
+        </div>
+
+        <div class="div-espaco-btn"></div>
+
+        <div class="container-btn-prox">
+            <button 
+            type="submit" 
+            class="btn-prox"
+            (click)="salvar()"
+            [disabled]="!form.valid">Salvar</button>
+        </div>
+    </form>
+</div>

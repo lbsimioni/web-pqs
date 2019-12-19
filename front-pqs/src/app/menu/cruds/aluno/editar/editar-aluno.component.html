@@ -1,0 +1,146 @@
+<div class="form">
+    <h1 class="center">Cadastrar Aluno</h1>
+    <div *ngIf="error || success" class="msg-container">
+        <div *ngFor="let e of lstErrors" class="error-msg">
+            {{ e }}
+        </div>
+        <div *ngFor="let s of lstSuccess" class="success-msg">
+            {{ s }}
+        </div>
+    </div>
+
+    <form *ngIf="exists" [formGroup]="form" class="pagina">
+        <h2>Dados Pessoais</h2>
+
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input 
+            type="text" 
+            name="nome" 
+            id="nome" 
+            class="form-control" 
+            formControlName="nome">
+        </div>
+
+        <div class="form-group inline">
+            <div class="form-g margin-r">
+                <label for="valorMensalidade">Valor da Mensalidade</label>
+                <input 
+                type="text" 
+                name="valorMensalidade" 
+                id="valorMensalidade" 
+                class="form-control"
+                formControlName="valorMensalidade"
+                [dropSpecialCharacters]="false" mask="0*.00" prefix="R$ "
+                readonly="true">
+            </div>
+
+            <div class="form-p margin-l">
+                <label for="cargaHoraria">Carga Horária (Ex.: 08)</label>
+                <input 
+                type="text" 
+                name="cargaHoraria" 
+                id="cargaHoraria" 
+                class="form-control"
+                formControlName="cargaHoraria"
+                mask="09" suffix=" horas/dia">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="dataNasc">Data de Nascimento</label>
+            <input 
+            type="date" 
+            name="dataNasc" 
+            id="dataNasc" 
+            class="form-control"
+            formControlName="dataNasc">
+        </div>
+
+        <div class="div-sep" formGroupName="responsavel">
+            <h2>Responsavel</h2>
+        
+            <label for="rg">RG</label>
+            <div class="input-group mb-3">
+                <input 
+                type="text" 
+                name="rg" 
+                id="rg" 
+                class="form-control" 
+                formControlName="rg">
+            
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                    (click)="pesquisar()">Pesquisar</button>
+                </div>
+            </div>
+
+            <div *ngIf="errorCpf" class="error-color">
+                <div *ngFor="let e of lstErrorsCpf">
+                    {{ e }}
+                </div>
+            </div>
+
+            <div *ngIf="successCpf">
+
+                <div class="form-group">
+                    <label for="">Nome do Responsável</label>
+                    <input 
+                    type="text" 
+                    name="nome" 
+                    id="nome" 
+                    class="form-control" 
+                    readonly="true"
+                    formControlName="nome">
+                </div>
+
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input 
+                    type="text" 
+                    name="cpf" 
+                    id="cpf" 
+                    class="form-control"
+                    readonly="true"
+                    formControlName="cpf"
+                    mask="000.000.000-00">
+                </div>
+                
+                <div class="form-group inline">
+                    <div class="form-g margin-r">
+                        <label for="qtdAluno">Quantidade de Alunos</label>
+                        <input 
+                        type="text" 
+                        name="qtdAluno" 
+                        id="qtdAluno" 
+                        class="form-control"
+                        readonly="true"
+                        formControlName="qtdAluno">
+                    </div>
+                
+                    <div class="form-p margin-l">
+                        <label for="valorMes">Valor Mês</label>
+                        <input 
+                        type="text" 
+                        name="valorMes" 
+                        id="valorMes" 
+                        class="form-control" 
+                        readonly="true"
+                        formControlName="valorMes"
+                        [dropSpecialCharacters]="false" mask="0*.00" prefix="R$ ">
+                    </div>
+                </div>
+                
+            </div>
+        
+        </div>
+
+        <div class="container-btn-prox">
+            <button 
+            type="submit" 
+            class="btn-prox"
+            (click)="salvar()"
+            [disabled]="!form.valid">Alterar</button>
+        </div>
+    </form>
+</div>

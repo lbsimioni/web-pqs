@@ -1,0 +1,84 @@
+<div class="form">
+    <div class="center">
+        <h1>Consultar Despesas Extras</h1>
+    </div>
+
+    <form class="pagina">
+        <div *ngIf="success" class="success-msg">
+            {{ msgSuccess }}
+        </div>
+
+        <div *ngIf="error" class="error-container">
+            <span class="error" *ngFor="let e of msgError">
+                {{ e.message }}
+            </span>
+        </div>
+
+        <div *ngIf="vazio">
+            Nenhuma despesa extra encontrado!
+        </div>
+        <div class="container-consultar">
+            <div class="card text-left" *ngFor="let desp of lstDespesas">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active">Informações</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> {{ desp.mes }}/{{ desp.ano }} </h5>
+
+                    <div class="card-text">
+
+                        <!-- Mês -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Mês:
+                            </div>
+                            <div class="card-item-info">
+                                {{ mes(desp.mes) }}
+                            </div>
+                        </div>
+
+                        <!-- Ano -->
+                        <div class="card-item no-under">
+                            <div class="card-item-title">
+                                Ano:
+                            </div>
+                            <div class="card-item-info">
+                                {{ desp.ano }}
+                            </div>
+                        </div>
+
+                        <div class="error-color card-item no-under" *ngIf="nulo(desp.extraList)">
+                            Nenhuma despesa extra
+                        </div>
+
+                        <table class="table" *ngIf="!nulo(desp.extraList)">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Área</th>
+                                    <th scope="col">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let e of desp.extraList">
+                                    <td>{{ e.area }}</td>
+                                    <td>{{ e.valor | currency: 'BRL' }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        
+
+                        <div class="card-bottom">
+                            <button type="button" class="btn-modal" (click)="editar(desp.codigo)">Editar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

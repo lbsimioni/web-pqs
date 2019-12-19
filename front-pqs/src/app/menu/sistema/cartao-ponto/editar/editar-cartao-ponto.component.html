@@ -1,0 +1,101 @@
+<div class="form">
+    <div class = "center"><h1>Cadastrar Despesa Extra</h1></div>
+    <div *ngIf="error || success" class = "msg-container">
+        <div *ngFor="let e of lstErrors" class = "error-msg">
+            {{ e }} 
+        </div>
+        <div *ngFor="let s of lstSuccess" class = "success-msg">
+            {{ s }}
+        </div>
+    </div>
+    
+
+    <form *ngIf="exists" [formGroup]="form" class="pagina">
+
+        <h3>Funcionário</h3>
+        <div formGroupName="funcionario">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input 
+                type="text" 
+                name="nome" 
+                id="nome" 
+                class="form-control" 
+                formControlName="nome"
+                readonly="true">
+            </div>
+
+            <div class="form-group">
+                <label for="nome">RG</label>
+                <input 
+                type="text" 
+                name="rg" 
+                id="rg" 
+                class="form-control" 
+                formControlName="rg"
+                readonly="true">
+            </div>
+        </div>
+        
+
+        <h3>Cartão Ponto</h3>
+        <div class="container-btn-extra">
+            <a class="a-extra add" (click)="addCartaoPonto()">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </a>
+        </div>
+        
+        <div formArrayName="lstCartaoPonto">
+            <div *ngFor="let e of lstCartaoPonto; let i = index" [formGroupName]="i">
+                <a class="a-extra remove" (click)="removeCartaoPonto(i)">
+                    <i class="fa fa-times"></i>
+                </a>
+                <div class="form-group">
+                    <label for="data">Data</label>
+                    <input 
+                        type="date" 
+                        name="date" 
+                        id="data" 
+                        class="form-control" 
+                        formControlName="data">
+                </div>
+                
+                <div class="form-group inline">
+                    <div class="form-m margin-r">
+                        <label for="horarioInic">Horário Entrada</label>
+                        <input 
+                            type="text" 
+                            name="horarioInic" 
+                            id="horarioInic" 
+                            class="form-control" 
+                            formControlName="horarioInic">
+                    </div>
+                
+                    <div class="form-m margin-l">
+                        <label for="horarioFim">Horário Saída</label>
+                        <input
+                        type="text" 
+                        name="horarioFim" 
+                        id="horarioFim" 
+                        class="form-control" 
+                        formControlName="horarioFim">
+                    </div>
+                </div>
+
+                
+            </div>
+            
+        </div>
+
+
+        <div class="div-espaco-btn"></div>
+
+        <div class="container-btn-prox">
+            <button 
+            type="submit" 
+            class="btn-prox"
+            (click)="salvar()"
+            [disabled]="!form.valid">Salvar</button>
+        </div>
+    </form>
+</div>

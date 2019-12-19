@@ -1,0 +1,276 @@
+<div class="form">
+    <div class = "center"><h1>Alterar Funcionário</h1></div>
+    <div *ngIf="error || success" class = "msg-container">
+        <div *ngFor="let e of lstErrors" class = "error-msg">
+            {{ e }} 
+        </div>
+        <div *ngFor="let s of lstSuccess" class = "success-msg">
+            {{ s }}
+        </div>
+    </div>
+    
+
+    <form *ngIf="exists" [formGroup]="form" class="pagina">
+        <h2>Dados Pessoais</h2>
+
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input 
+            type="text" 
+            name="nome" 
+            id="nome" 
+            class="form-control" 
+            formControlName="nome">
+        </div>
+
+        <div class="form-group inline">
+            <div class="form-m margin-r">
+                <label for="profissao">Profissão</label>
+                <input 
+                type="text" 
+                name="prof" 
+                id="prof" 
+                class="form-control"
+                formControlName="profissao">
+            </div>
+
+            <div class="form-m margin-l">
+                <label for="cargaHoraria">Carga Horária (Ex.: 08)</label>
+                <input 
+                type="text" 
+                name="cargaHoraria" 
+                id="cargaHoraria" 
+                class="form-control" 
+                formControlName="cargaHoraria"
+                mask="00" suffix=" horas/dia">
+            </div>
+
+            <div class="form-m margin-l">
+                <label for="salario">Salário</label>
+                <input 
+                type="text" 
+                name="salario" 
+                id="salario" 
+                class="form-control" 
+                formControlName="salario"
+                [dropSpecialCharacters]="false" mask="0*.00" prefix="R$ ">
+            </div>
+        </div>
+
+        <div class="form-group inline">
+            <div class="form-m margin-r">
+                <label for="rg">RG</label>
+                <input 
+                type="text" 
+                name="rg" 
+                id="rg" 
+                class="form-control" 
+                formControlName="rg">
+            </div>
+
+            <div class="form-m margin-l">
+                <label for="cpf">CPF</label>
+                <input 
+                type="text" 
+                name="cpf" 
+                id="cpf" 
+                class="form-control" 
+                formControlName="cpf"
+                mask="000.000.000-00">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="dataNasc">Data de Nascimento</label>
+            <input 
+            type="date" 
+            name="dataNasc" 
+            id="dataNasc" 
+            class="form-control"
+            formControlName="dataNasc">
+        </div>
+
+        <div class="div-sep" formGroupName="endereco">
+            <h2>Endereço</h2>
+            
+            <label for="cep">CEP</label>
+            <div class="input-group mb-3">
+                <input 
+                type="text" 
+                name="cep" 
+                id="cep" 
+                class="form-control" 
+                formControlName="cep"
+                (input)="validar()"
+                mask="00000-000">
+            
+                <div class="input-group-append">
+                    <button 
+                    class="btn btn-outline-secondary" 
+                    type="button" 
+                    id="button-addon2"
+                    (click)="pesquisar()">Pesquisar</button>
+                </div>
+            </div>
+            <span *ngIf="errorCep" class="error-color">
+                CEP não é valido, precisa ter 8 caracteres
+            </span>
+
+            <div *ngIf="contCep">
+                <div class="form-group inline">
+                    <div class="form-g margin-r">
+                        <label for="logradouro">Logradouro</label>
+                        <input type="text" 
+                        name="logradouro" 
+                        id="logradouro" 
+                        class="form-control" 
+                        formControlName="logradouro">
+                    </div>
+                
+                    <div class="form-p margin-l">
+                        <label for="numero">Número</label>
+                        <input 
+                        type="text" 
+                        name="numero" 
+                        id="numero" 
+                        class="form-control" 
+                        formControlName="numero">
+                    </div>
+                </div>
+
+                <div class="form-group inline">
+                    <div class="form-g margin-r">
+                        <label for="bairro">Bairro</label>
+                        <input 
+                        type="text" 
+                        name="bairro" 
+                        id="bairro" 
+                        class="form-control" 
+                        formControlName="bairro">
+                    </div>
+                
+                    <div class="form-p margin-l">
+                        <label for="uf">Estado</label>
+                        <input 
+                        type="text" 
+                        name="uf" 
+                        id="uf" 
+                        class="form-control" 
+                        formControlName="uf"
+                        mask="SS">
+                    </div>
+                </div>
+
+                <div class="form-group inline">
+                    <div class="form-g margin-r">
+                        <label for="complemento">Complemento</label>
+                        <input 
+                        type="text" 
+                        name="complemento" 
+                        id="complemento" 
+                        class="form-control" 
+                        formControlName="complemento">
+                    </div>
+                
+                    <div class="form-p margin-l">
+                        <label for="cidade">Cidade</label>
+                        <input 
+                        type="text" 
+                        name="cidade" 
+                        id="cidade" 
+                        class="form-control" 
+                        formControlName="cidade">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="div-sep" formGroupName="contato">
+            <h2>Contato</h2>
+
+            <div class="form-group inline">
+                <div class="form-m margin-r">
+                    <label for="celular">Celular</label>
+                    <input 
+                    type="text" 
+                    name="celular" 
+                    id="celular" 
+                    class="form-control" 
+                    formControlName="celular"
+                    mask="(00) 0 0000-0000">
+                </div>
+            
+                <div class="form-m margin-l">
+                    <label for="telefone">Telefone</label>
+                    <input 
+                    type="text" 
+                    name="telefone" 
+                    id="telefone" 
+                    class="form-control" 
+                    formControlName="telefone"
+                    mask="(00) 0000-0000">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input 
+                type="email" 
+                name="email" 
+                id="email" 
+                class="form-control"
+                formControlName="email">
+            </div>
+
+        </div>
+        
+
+        <div class="div-sep">
+            <h2>Login</h2>
+            
+            <div class="form-group inline">
+                <div class="form-m margin-r">
+                    <label for="username">Usuário</label>
+                    <input 
+                    type="text" 
+                    name="username" 
+                    id="username" 
+                    class="form-control" 
+                    formControlName="username"
+                    readonly="true">
+                </div>
+            
+                <div class="form-m margin-l">
+                    <label for="password">Nova Senha</label>
+                    <input 
+                    type="text" 
+                    name="password" 
+                    id="password" 
+                    class="form-control" 
+                    formControlName="password">
+                </div>
+            </div>
+        </div>
+
+        <div class="div-sep">
+            <h2>Observações</h2>
+            <div class="form-group">
+                <textarea 
+                name="obs" 
+                id="obs" 
+                class="form-control"
+                formControlName="obs"></textarea>
+            </div>
+        </div>
+
+        <div class="div-espaco-btn"></div>
+
+        <div class="container-btn-prox">
+            <button 
+            type="submit" 
+            class="btn-prox"
+            (click)="salvar()"
+            [disabled]="!form.valid">Alterar</button>
+        </div>
+    </form>
+</div>

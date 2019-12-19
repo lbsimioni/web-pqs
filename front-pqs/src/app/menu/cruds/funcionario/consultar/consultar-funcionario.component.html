@@ -1,0 +1,187 @@
+<div class = "form">
+    <div class="center">
+        <h1>Consultar Funcionários</h1>
+    </div>
+
+    <form class="pagina">
+        <div *ngIf="success" class="success-msg">
+            {{ msgSuccess }}
+        </div>
+        
+        <div *ngIf="error" class="error-container">
+            <span class="error" *ngFor = "let e of msgError">
+                {{ e.message }}
+            </span>
+        </div>
+        
+        <div *ngIf="vazio">
+            Nenhum funcionário encontrado!
+        </div>
+        <div class = "container-consultar">
+            <div class="card text-left" *ngFor = "let func of lstFuncionario">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active">Informações</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> {{ func.nome }} </h5>
+                    
+                    <div class="card-text">
+
+                        <!-- Codigo -->
+                        <div class = "card-item">
+                            <div class = "card-item-title">
+                                Codigo:
+                            </div>
+                            <div class = "card-item-info">
+                                {{ func.codigo }}
+                            </div>
+                        </div>
+
+                        <!-- Nome -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Nome:
+                            </div>
+                            <div class="card-item-info">
+                                {{ func.nome }}
+                            </div>
+                        </div>
+
+                        <!-- Profissão -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Profissão:
+                            </div>
+                            <div class="card-item-info">
+                                {{ func.profissao }}
+                            </div>
+                        </div>
+
+                        <!-- Carga Horária -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Carga Horária:
+                            </div>
+                            <div class="card-item-info">
+                                {{ func.cargaHoraria }} horas/dia
+                            </div>
+                        </div>
+
+                        <!-- Salário -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Salário:
+                            </div>
+                            <div class="card-item-info">
+                                {{ func.salario | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <!-- RG -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                RG:
+                            </div>
+                            <div class="card-item-info">
+                                {{ func.rg }}
+                            </div>
+                        </div>
+
+                        <!-- CPF -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                CPF:
+                            </div>
+                            <div class="card-item-info">
+                                {{ func.cpf | mask: '000.000.000-00' }}
+                            </div>
+                        </div>
+
+                        <!-- Endereço -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Endereço:
+                            </div>
+                            <div class="card-item-info">
+                                {{ func.endereco.logradouro }} - {{ func.endereco.numero }} - {{ func.endereco.bairro }} / {{ func.endereco.cidade }} - {{ func.endereco.uf }} 
+                            </div>
+                        </div>
+
+                        <!-- Celular -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Celular:
+                            </div>
+                            <div class="card-item-info">
+                                {{ func.contato.celular | mask: '(00) 0 0000-0000' }}
+                            </div>
+                        </div>
+
+                        <!-- Telefone -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Telefone:
+                            </div>
+                            <div class="card-item-info">
+                                {{ func.contato.telefone | mask: '(00) 0000-0000' }}
+                            </div>
+                        </div>
+
+                        <!-- E-mail -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                E-mail:
+                            </div>
+                            <div class="card-item-info">
+                                {{ func.contato.email }}
+                            </div>
+                        </div>
+
+                        <!-- Obs -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Obs.:
+                            </div>
+                            <div class="card-item-info">
+                                {{ func.obs }}
+                            </div>
+                        </div>
+
+                        <!-- Estado -->
+                        <div class="card-bottom">
+                            <div class="card-item-title">
+                                Estado:
+                            </div>
+                            <div class="card-item-info">
+                                <div class="card-button-container">
+                                    <button 
+                                    type="button"
+                                    (click)="setEstado(func.codigo)"
+                                    class="card-button">
+                                        <div class="btn-active"
+                                        *ngIf="func.estado">Ativo
+                                        </div>
+
+                                        <div class="btn-desactive" *ngIf="!func.estado">
+                                        Inativo
+                                        </div>
+                                    </button>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="card-bottom">
+                            <button type="button" class="btn-modal" (click)="editar(func.codigo)">Editar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

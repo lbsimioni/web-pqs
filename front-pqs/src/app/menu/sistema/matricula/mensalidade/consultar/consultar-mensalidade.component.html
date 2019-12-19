@@ -1,0 +1,103 @@
+<div class="form">
+    <div class="center">
+        <h1>Consultar Mensalidades</h1>
+    </div>
+
+    <form class="pagina">
+        <div *ngIf="success" class="success-msg">
+            {{ msgSuccess }}
+        </div>
+
+        <div *ngIf="error" class="error-container">
+            <span class="error" *ngFor="let e of msgError">
+                {{ e.message }}
+            </span>
+        </div>
+
+        <div *ngIf="vazio">
+            Nenhuma mensalidade encontrada!
+        </div>
+        <div class="container-consultar">
+            <div class="card text-left" *ngFor="let m of lstMensalidades">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active">Informações</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> {{ m.mes }}/{{ m.ano }} </h5>
+
+                    <div class="card-text" id="dadosPessoais">
+
+                        <!-- Codigo -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Codigo:
+                            </div>
+                            <div class="card-item-info">
+                                {{ m.codigo }}
+                            </div>
+                        </div>
+
+                        <!-- Mês -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Mês:
+                            </div>
+                            <div class="card-item-info">
+                                {{ mes(m.mes) }}
+                            </div>
+                        </div>
+
+                        <!-- Ano -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Ano:
+                            </div>
+                            <div class="card-item-info">
+                                {{ m.ano }}
+                            </div>
+                        </div>
+
+                        <!-- Valor -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Valor:
+                            </div>
+                            <div class="card-item-info">
+                                {{ m.valor | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <!-- Nome do Aluno -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Nome do Aluno:
+                            </div>
+                            <div class="card-item-info">
+                                {{ m.aluno.nome }}
+                            </div>
+                        </div>
+
+                        <!-- Nome do Responsável -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Nome do Responsável:
+                            </div>
+                            <div class="card-item-info">
+                                {{ m.aluno.responsavel.nome }}
+                            </div>
+                        </div>
+
+                        <div class="card-bottom">
+                            <button type="button" class="btn-modal" (click)="pagar(m.codigo)">Pagar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

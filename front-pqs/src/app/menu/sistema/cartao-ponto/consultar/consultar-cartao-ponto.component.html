@@ -1,0 +1,97 @@
+<div class="form">
+    <div class="center">
+        <h1>Consultar Cartões Pontos</h1>
+    </div>
+
+    <form class="pagina">
+        <div *ngIf="success" class="success-msg">
+            {{ msgSuccess }}
+        </div>
+
+        <div *ngIf="error" class="error-container">
+            <span class="error" *ngFor="let e of msgError">
+                {{ e.message }}
+            </span>
+        </div>
+
+        <div *ngIf="vazio">
+            Nenhum cartão ponto encontrado!
+        </div>
+        <div class="container-consultar">
+            <div class="card text-left" *ngFor="let cp of lstCP">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active">Informações</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> {{ cp.funcionario.nome }} </h5>
+
+                    <div class="card-text" id="dadosPessoais">
+
+                        <!-- Codigo -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Codigo:
+                            </div>
+                            <div class="card-item-info">
+                                {{ cp.codigo }}
+                            </div>
+                        </div>
+
+                        <!-- Nome do Funcionário -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Nome do Funcionário:
+                            </div>
+                            <div class="card-item-info">
+                                {{ cp.funcionario.nome }}
+                            </div>
+                        </div>
+
+                        <!-- RG do Funcionário -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                RG do Funcionário:
+                            </div>
+                            <div class="card-item-info">
+                                {{ cp.funcionario.rg }}
+                            </div>
+                        </div>
+
+                        <div class="error-color card-item no-under" *ngIf="nulo(cp.lstCartaoPonto)">
+                            Nenhum cartão ponto
+                        </div>
+                        
+                        <table class="table" *ngIf="!nulo(cp.lstCartaoPonto)">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Horário Início</th>
+                                    <th scope="col">Horário Saída</th>
+                                    <th scope="col">Carga Horária</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let c of cp.lstCartaoPonto">
+                                    <td>{{ c.data | date: 'dd/MM/yy' }}</td>
+                                    <td>{{ c.horarioInic }}</td>
+                                    <td>{{ c.horarioFim }}</td>
+                                    <td>{{ c.cargaHoraria }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                        <div class="card-bottom">
+                            <button type="button" class="btn-modal" (click)="editar(cp.codigo)">Editar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

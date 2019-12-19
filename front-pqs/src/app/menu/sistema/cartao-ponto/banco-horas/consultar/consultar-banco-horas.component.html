@@ -1,0 +1,66 @@
+<div class="form">
+    <div class="center">
+        <h1>Consultar Bancos de Horas</h1>
+    </div>
+
+    <form class="pagina">
+
+        <div *ngIf="error" class="error-container">
+            <span class="error" *ngFor="let e of msgError">
+                {{ e.message }}
+            </span>
+        </div>
+
+        <div *ngIf="vazio">
+            Nenhum banco de horas encontrado!
+        </div>
+        <div class="container-consultar">
+            <div class="card text-left" *ngFor="let bh of lstBancosHoras">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active">Informações</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> {{ bh.funcionario.nome }} </h5>
+
+                    <div class="card-text" id="dadosPessoais">
+
+                        <!-- Codigo -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Codigo:
+                            </div>
+                            <div class="card-item-info">
+                                {{ bh.codigo }}
+                            </div>
+                        </div>
+
+                        <!-- Nome -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Nome:
+                            </div>
+                            <div class="card-item-info">
+                                {{ bh.funcionario.nome }}
+                            </div>
+                        </div>
+
+                        <!-- Horas -->
+                        <div class="card-item no-under">
+                            <div class="card-item-title">
+                                Horas:
+                            </div>
+                            <div class="card-item-info">
+                                {{ bh.horas }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,133 @@
+<div class="form">
+    <div class="center">
+        <h1>Consultar Matrículas</h1>
+    </div>
+
+    <form class="pagina">
+        <div *ngIf="success" class="success-msg">
+            {{ msgSuccess }}
+        </div>
+
+        <div *ngIf="error" class="error-container">
+            <span class="error" *ngFor="let e of msgError">
+                {{ e.message }}
+            </span>
+        </div>
+
+        <div *ngIf="vazio">
+            Nenhuma matrícula encontrada!
+        </div>
+        <div class="container-consultar">
+            <div class="card text-left" *ngFor="let matricula of lstMatriculas">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active">Informações</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> {{ matricula.mes }} </h5>
+
+                    <div class="card-text" id="dadosPessoais">
+
+                        <!-- Codigo -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Codigo:
+                            </div>
+                            <div class="card-item-info">
+                                {{ matricula.codigo }}
+                            </div>
+                        </div>
+
+                        <!-- Nome do ALuno -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Nome do Aluno:
+                            </div>
+                            <div class="card-item-info">
+                                {{ matricula.aluno.nome }}
+                            </div>
+                        </div>
+
+                        <!-- Nome do Responsável -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Nome do Responsável:
+                            </div>
+                            <div class="card-item-info">
+                                {{ matricula.aluno.responsavel.nome }}
+                            </div>
+                        </div>
+
+                        <!-- Data de Entrada -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Data de Entrada:
+                            </div>
+                            <div class="card-item-info">
+                                {{ matricula.dataInic | date: 'dd/MM/yy' }}
+                            </div>
+                        </div>
+
+                        <!-- Data de Encerramento -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Data de Encerramento:
+                            </div>
+                            <div class="card-item-info">
+                                {{ matricula.dataFim | date: 'dd/MM/yy' }}
+                            </div>
+                        </div>
+
+                        <!-- Ano -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Data Pagamento:
+                            </div>
+                            <div class="card-item-info">
+                                {{ matricula.dataPagamento }}
+                            </div>
+                        </div>
+
+                        <!-- Valor -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Valor:
+                            </div>
+                            <div class="card-item-info">
+                                {{ matricula.valor | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <!-- Desconto -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Desconto:
+                            </div>
+                            <div class="card-item-info">
+                                {{ matricula.desconto | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <!-- Valor Final -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Valor Final:
+                            </div>
+                            <div class="card-item-info">
+                                {{ matricula.valorFinal | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <div class="card-bottom">
+                            <button type="button" class="btn-modal" (click)="editar(matricula.codigo)">Editar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

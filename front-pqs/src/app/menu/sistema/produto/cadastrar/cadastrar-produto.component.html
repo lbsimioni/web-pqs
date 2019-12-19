@@ -1,0 +1,82 @@
+<div class="form">
+    <div class = "center"><h1>Cadastrar Produto</h1></div>
+    <div *ngIf="error || success" class = "msg-container">
+        <div *ngFor="let e of lstErrors" class = "error-msg">
+            {{ e }} 
+        </div>
+        <div *ngFor="let s of lstSuccess" class = "success-msg">
+            {{ s }}
+        </div>
+    </div>
+
+    <form [formGroup]="form" class="pagina">
+
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input 
+            type="text" 
+            name="nome" 
+            id="nome" 
+            class="form-control" 
+            formControlName="nome">
+        </div>
+
+        <div class="form-group inline">
+            <div class="form-m margin-r">
+                <label for="contAgua">Estoque</label>
+                <input 
+                type="text" 
+                name="estoque" 
+                id="estoque" 
+                class="form-control"
+                formControlName="estoque"
+                mask="0*" suffix=" unidades">
+            </div>
+
+            <div class="form-m margin-l">
+                <label for="contEnergia">Estoque Mínimo</label>
+                <input 
+                type="text" 
+                name="estoqueMinimo" 
+                id="estoqueMinimo" 
+                class="form-control" 
+                formControlName="estoqueMinimo"
+                mask="0*" suffix=" unidades">
+            </div>
+        </div>
+
+        <div class="form-group inline">
+            <div class="form-m margin-r">
+                <label for="compra">Custo de Produção</label>
+                <input 
+                type="text" 
+                name="custo" 
+                id="custo" 
+                class="form-control"
+                formControlName="custo"
+                [dropSpecialCharacters]="false" mask="0*.00" prefix="R$ ">
+            </div>
+
+            <div class="form-m margin-l">
+                <label for="material">Valor de Venda</label>
+                <input 
+                type="text" 
+                name="valorVenda" 
+                id="valorVenda" 
+                class="form-control" 
+                formControlName="valorVenda"
+                [dropSpecialCharacters]="false" mask="0*.00" prefix="R$ ">
+            </div>
+        </div>
+
+        <div class="div-espaco-btn"></div>
+
+        <div class="container-btn-prox">
+            <button 
+            type="submit" 
+            class="btn-prox"
+            (click)="salvar()"
+            [disabled]="!form.valid">Salvar</button>
+        </div>
+    </form>
+</div>

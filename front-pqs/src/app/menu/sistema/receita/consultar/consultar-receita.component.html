@@ -1,0 +1,109 @@
+<div class = "form">
+    <div class="center">
+        <h1>Consultar Receitas</h1>
+    </div>
+
+    <form class="pagina">
+        <div *ngIf="success" class="success-msg">
+            {{ msgSuccess }}
+        </div>
+        
+        <div *ngIf="error" class="error-container">
+            <span class="error" *ngFor = "let e of msgError">
+                {{ e.message }}
+            </span>
+        </div>
+        
+        <div *ngIf="vazio">
+            Nenhuma receita encontrada!
+        </div>
+        <div class = "container-consultar">
+            <div class="card text-left" *ngFor = "let receita of lstReceita">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active">Informações</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> {{ receita.mes }}/{{ receita.ano }} </h5>
+                    
+                    <div class="card-text" id="dadosPessoais">
+
+                        <!-- Codigo -->
+                        <div class = "card-item">
+                            <div class = "card-item-title">
+                                Codigo:
+                            </div>
+                            <div class = "card-item-info">
+                                {{ receita.codigo }}
+                            </div>
+                        </div>
+
+                        <!-- Mês -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Mês:
+                            </div>
+                            <div class="card-item-info">
+                                {{ mes(receita.mes) }}
+                            </div>
+                        </div>
+
+                        <!-- Ano -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Ano:
+                            </div>
+                            <div class="card-item-info">
+                                {{ receita.ano }}
+                            </div>
+                        </div>
+
+                        <!-- Recebimento Material -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Recebimento Material:
+                            </div>
+                            <div class="card-item-info">
+                                {{ receita.recebimentoMaterial | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <!-- Recebimento Mensalidade -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Recebimento Mensalidade:
+                            </div>
+                            <div class="card-item-info">
+                                {{ receita.recebimentoMensalidade | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <!-- Extras -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Extras:
+                            </div>
+                            <div class="card-item-info">
+                                {{ receita.valorExtra | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <!-- Total -->
+                        <div class="card-item no-under">
+                            <div class="card-item-title">
+                                Total:
+                            </div>
+                            <div class="card-item-info">
+                                {{ receita.total | currency: 'BRL' }}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

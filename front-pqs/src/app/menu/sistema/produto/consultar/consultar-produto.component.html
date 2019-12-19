@@ -1,0 +1,111 @@
+<div class="form">
+    <div class="center">
+        <h1>Consultar Produtos</h1>
+    </div>
+
+    <form class="pagina">
+        <div *ngIf="success" class="success-msg">
+            {{ msgSuccess }}
+        </div>
+
+        <div *ngIf="error" class="error-container">
+            <span class="error" *ngFor="let e of msgError">
+                {{ e.message }}
+            </span>
+        </div>
+
+        <div *ngIf="vazio">
+            Nenhum produto encontrado!
+        </div>
+        <div class="container-consultar">
+            <div class="card text-left" *ngFor="let prod of lstProdutos">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active">Informações</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> {{ prod.nome }} </h5>
+
+                    <div class="card-text">
+
+                        <!-- Codigo -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Codigo:
+                            </div>
+                            <div class="card-item-info">
+                                {{ prod.codigo }}
+                            </div>
+                        </div>
+
+                        <!-- Nome -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Nome:
+                            </div>
+                            <div class="card-item-info">
+                                {{ prod.nome }}
+                            </div>
+                        </div>
+
+                        <!-- Estoque -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Estoque:
+                            </div>
+                            <div class="card-item-info">
+                                {{ prod.estoque }}
+                            </div>
+                        </div>
+
+                        <!-- Estoque Mínimo -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Estoque Mínimo:
+                            </div>
+                            <div class="card-item-info">
+                                {{ prod.estoqueMinimo }}
+                            </div>
+                        </div>
+
+                        <!-- Custo de Produção -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Custo de Produção:
+                            </div>
+                            <div class="card-item-info">
+                                {{ prod.custo | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <!-- Valor de Venda -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Valor de Venda:
+                            </div>
+                            <div class="card-item-info">
+                                {{ prod.valorVenda | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <div class="card-bottom">
+                            <button type="button" class="btn-modal" (click)="editar(prod.codigo)">Editar</button>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="form-m margin-r">
+                                <button type="button" class="button-ent" (click)="entrada(prod.codigo)">Entrada</button>
+                            </div>
+                            
+                            <div class="form-m margin-l">
+                                <button type="button" class="button-ent" (click)="vender(prod.codigo)">Vender</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

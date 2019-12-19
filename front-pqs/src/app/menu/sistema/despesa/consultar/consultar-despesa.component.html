@@ -1,0 +1,153 @@
+<div class = "form">
+    <div class="center">
+        <h1>Consultar Despesas</h1>
+    </div>
+
+    <form class="pagina">
+        <div *ngIf="success" class="success-msg">
+            {{ msgSuccess }}
+        </div>
+        
+        <div *ngIf="error" class="error-container">
+            <span class="error" *ngFor = "let e of msgError">
+                {{ e.message }}
+            </span>
+        </div>
+        
+        <div *ngIf="vazio">
+            Nenhuma despesa encontrado!
+        </div>
+        <div class = "container-consultar">
+            <div class="card text-left" *ngFor = "let desp of lstDespesas">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active">Informações</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"> {{ desp.mes }}/{{ desp.ano }} </h5>
+                    
+                    <div class="card-text" id="dadosPessoais">
+
+                        <!-- Codigo -->
+                        <div class = "card-item">
+                            <div class = "card-item-title">
+                                Codigo:
+                            </div>
+                            <div class = "card-item-info">
+                                {{ desp.codigo }}
+                            </div>
+                        </div>
+
+                        <!-- Mês -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Mês:
+                            </div>
+                            <div class="card-item-info">
+                                {{ mes(desp.mes) }}
+                            </div>
+                        </div>
+
+                        <!-- Ano -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Ano:
+                            </div>
+                            <div class="card-item-info">
+                                {{ desp.ano }}
+                            </div>
+                        </div>
+
+                        <!-- Conta de Água -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Conta de Água:
+                            </div>
+                            <div class="card-item-info">
+                                {{ desp.contAgua | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <!-- Conta de Energia -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Conta de Energia:
+                            </div>
+                            <div class="card-item-info">
+                                {{ desp.contEnergia | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <!-- Conta de Internet -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Conta de Internet:
+                            </div>
+                            <div class="card-item-info">
+                                {{ desp.contInternet | currency: 'BRL' }}
+                            </div>
+                        </div>
+                        
+                        <!-- Material -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Material:
+                            </div>
+                            <div class="card-item-info">
+                                {{ desp.material | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <!-- Pagamento de Funcionários -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Pagamento de Funcionários:
+                            </div>
+                            <div class="card-item-info">
+                                {{ desp.pagamentoFunc | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <!-- Compra -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Compra:
+                            </div>
+                            <div class="card-item-info">
+                                {{ desp.compra | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <!-- Extras -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Extras:
+                            </div>
+                            <div class="card-item-info">
+                                {{ desp.valorExtra | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <!-- Total -->
+                        <div class="card-item">
+                            <div class="card-item-title">
+                                Total:
+                            </div>
+                            <div class="card-item-info">
+                                {{ desp.total | currency: 'BRL' }}
+                            </div>
+                        </div>
+
+                        <div class="card-bottom">
+                            <button type="button" class="btn-modal" (click)="editar(desp.codigo)">Editar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

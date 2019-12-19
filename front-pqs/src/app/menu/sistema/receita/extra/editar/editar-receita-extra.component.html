@@ -1,0 +1,89 @@
+<div class="form">
+    <div class = "center"><h1>Cadastrar Receita Extra</h1></div>
+    <div *ngIf="error || success" class = "msg-container">
+        <div *ngFor="let e of lstErrors" class = "error-msg">
+            {{ e }} 
+        </div>
+        <div *ngFor="let s of lstSuccess" class = "success-msg">
+            {{ s }}
+        </div>
+    </div>
+    
+
+    <form *ngIf="exists" [formGroup]="form" class="pagina">
+        <div class="inline">
+            <div class="form-m margin-r">
+            </div>
+            <div class="form-m margin-l">
+                
+            </div>
+            
+        </div>
+        
+
+        <div class="input-group mb-3">
+
+            <div class="form-m margin-r">
+                <label for="mes">Mês</label>
+                <input 
+                type="text" 
+                name="mes" 
+                id="mes" 
+                class="form-control" 
+                formControlName="mes"
+                readonly="true">
+            </div>
+
+            <div class="form-m margin-l">
+                <label for="ano">Ano</label>
+                <input 
+                type="text" 
+                name="ano" 
+                id="ano" 
+                class="form-control" 
+                formControlName="ano"
+                readonly="true">
+            </div>
+        </div>
+
+        
+        <div>
+            <h3>Extra</h3>
+            <div class="container-btn-extra">
+                <a class="a-extra add" (click)="addExtra()">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </a>
+            </div>
+            
+            <div formArrayName="extraList">
+                <div class="form-group inline" *ngFor="let e of extras; let i = index" [formGroupName]="i">
+                    <div class="form-m margin-r">
+                        <label for="area">Área</label>
+                        <input type="text" name="area" id="area" class="form-control" formControlName="area">
+                    </div>
+                
+                    <div class="form-m margin-l">
+                        <label for="valor">Valor</label>
+                        <input type="text" name="valor" id="valor" class="form-control" formControlName="valor" [dropSpecialCharacters]="false" mask="0*.00" prefix="R$ ">
+                    </div>
+
+                    <a class="a-extra remove" (click)="removeExtra(i, e.value.codigo)">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+
+
+        <div class="div-espaco-btn"></div>
+
+        <div class="container-btn-prox">
+            <button 
+            type="submit" 
+            class="btn-prox"
+            (click)="salvar()"
+            [disabled]="!form.valid">Salvar</button>
+        </div>
+    </form>
+</div>

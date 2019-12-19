@@ -1,0 +1,125 @@
+<div class="form">
+    <div class = "center"><h1>Cadastrar Venda</h1></div>
+    <div *ngIf="error || success" class = "msg-container">
+        <div *ngFor="let e of lstErrors" class = "error-msg">
+            {{ e }} 
+        </div>
+        <div *ngFor="let s of lstSuccess" class = "success-msg">
+            {{ s }}
+        </div>
+    </div>
+
+    <form *ngIf="exists" [formGroup]="form" class="pagina">
+
+        <div formGroupName="produto">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input 
+                type="text" 
+                name="nome" 
+                id="nome" 
+                class="form-control" 
+                formControlName="nome"
+                readonly="true">
+            </div>
+        </div>
+        
+
+        <div class="form-group inline">
+            <div class="form-m margin-r">
+                <label for="valorUnit">Valor Unitário</label>
+                <input 
+                type="text" 
+                name="valorUnit" 
+                id="valorUnit" 
+                class="form-control"
+                formControlName="valorUnit"
+                [dropSpecialCharacters]="false" mask="0*.00" prefix="R$ "
+                readonly="true">
+            </div>
+
+            <div class="form-m margin-l">
+                <label for="material">Quantidade</label>
+                <input 
+                type="text" 
+                name="quantidade" 
+                id="quantidade" 
+                class="form-control" 
+                formControlName="quantidade">
+            </div>
+        </div>
+
+        <div class="div-sep" formGroupName="responsavel">
+            <h2>Responsavel</h2>
+        
+            <label for="rg">RG</label>
+            <div class="input-group mb-3">
+                <input 
+                type="text" 
+                name="rg" 
+                id="rg" 
+                class="form-control" 
+                formControlName="rg">
+            
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                    (click)="pesquisarResp()">Pesquisar</button>
+                </div>
+            </div>
+
+            <div *ngIf="errorCpf" class="error-color">
+                <div *ngFor="let e of lstErrorsCpf">
+                    {{ e }}
+                </div>
+            </div>
+
+            <div *ngIf="successCpf">
+                <div class="form-group">
+                    <label for="codigo">Código do Responsável</label>
+                    <input 
+                    type="number" 
+                    name="codigo" 
+                    id="codigo" 
+                    class="form-control" 
+                    formControlName="codigo"
+                    readonly="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Nome do Responsável</label>
+                    <input 
+                    type="text" 
+                    name="nome" 
+                    id="nome" 
+                    class="form-control" 
+                    formControlName="nome"
+                    readonly="true">
+                </div>
+
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input 
+                        type="text" 
+                        name="cpf" 
+                        id="cpf" 
+                        class="form-control"
+                        formControlName="cpf"
+                        readonly="true"
+                        mask="000.000.000-00">
+                </div>
+                
+            </div>
+        
+        </div>
+
+        <div class="div-espaco-btn"></div>
+
+        <div class="container-btn-prox">
+            <button 
+            type="submit" 
+            class="btn-prox"
+            (click)="salvar()"
+            [disabled]="!form.valid">Salvar</button>
+        </div>
+    </form>
+</div>
